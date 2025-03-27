@@ -1,128 +1,77 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
 import Calendar from 'react-calendar'; 
 import 'react-calendar/dist/Calendar.css'; // Import the default styles for the calendar
 import  './MarkAttendance.css';
+import SubjectList from './SubjectList';
 
 export default function MarkAttendance({ subjects }) {
-    const [selectedSubject, setSelectedSubject] = useState(subjects[0]); // Default to the first subject
-    const [attendance, setAttendance] = useState(''); // State to manage attendance (Present/Absent/No Class/GT)
+    const [selectedDate, setSelectedDate] = useState(new Date()); // State to manage the selected date
+  const [attendanceData, setAttendanceData] = useState({}); // State to store attendance for all subjects
 
-    const handleSubjectChange = (e) => {
-        setSelectedSubject(e.target.value); // Update the selected subject
-        setAttendance(''); // Reset attendance when the subject changes
-    };
+  const handleDateChange = (date) => {
+    setSelectedDate(date); // Update the selected date
+  };
 
-    const handleAttendanceSubmit = () => {
-        if (!attendance) {
-            alert('Please select an attendance option!');
-            return;
-        }
-        alert(`Attendance for ${selectedSubject} marked as: ${attendance}`);
+  const handleAttendanceSubmit = (subjectId, status) => {
+    setAttendanceData((prevData) => ({
+      ...prevData,
+      [subjectId]: status, // Update attendance for the specific subject
+    }));
+  };
+
+  const saveAttendance = () => {
+    console.log('Attendance Data:', attendanceData);
+    alert('Attendance saved successfully!');
     };
 
     return (
-        <div className="min-h-screen bg-gray-800">
-            <div className="text-5xl bg-black p-4 mb-20 text-gray-300 font-bold text-center">
+        <div className="min-h-screen font-serif bg-gray-800">
+            <div className="text-5xl font-serif bg-black p-4 mb-10 text-gray-300 font-bold text-center">
                 Mark Your Attendance for Today!
             </div>
 
-            <div className='font-bold text-5xl mb-20 flex flex-row items-center justify-center h-auto gap-20'>
-                <div className='m-5 text-white'>
-                    <p>Attendance Made Simple & Smart!
-                    <br />
-                    <p className='pt-2 text-2xl font-normal'>Mark your presence effortlessly and stay on track with your commitments. Record Today, Succeed Tomorrow!</p>
-                    </p>
+            <div className='m-5 text-white font-serif pb-10'>
+                    <div className='text-3xl font-bold '>Attendance Made Simple & Smart!
+                        <br />
+                        <p className='pt-1 text-xl font-normal text-gray-400'>Mark your presence effortlessly and stay on track with your commitments. Record Today, Succeed Tomorrow!</p>
+                    </div>
                 </div>
-                
-                
-                <div className='bg-gray-900 p-1 rounded-lg mt-4 calendar-container' >
+
+            <div className='font-bold text-4xl mb-20 flex flex-row  justify-start gap-20 p-5 h-auto w-full'>
+                                
+                <div className='p-4 rounded-lg text-white border-l border-t border-gray-100 bg-gray-950 mt-4 calendar-container' >
+                    <h2 className='text-2xl p-2 mb-5'>Select Date</h2>
                     <Calendar
-                        value={new Date()}
+                        value={selectedDate}
+                        onChange={handleDateChange} // Allow date selection
                         tileClassName={({ date, view }) => {
                             const today = new Date();
                             return date.getDate() === today.getDate() &&
                                 date.getMonth() === today.getMonth() &&
                                 date.getFullYear() === today.getFullYear();
-                            
                         }}
                     />
                 </div>
-            </div>
 
+                <div className='p-1 rounded-lg mt-4 bg-gray-950 w-1/2 border-l border-t border-gray-100'>
+                <div className='flex flex-row items-center gap-x-16'>
+                    <div>
+                        <h2 className="text-2xl p-3 m-2 mb-0 pb-0 font-semibold text-white">
+                        Mark Attendance for: {selectedDate.toDateString()}
+                        </h2>
+                        <h4 className='text-xl text-gray-400 pl-5 pb-5 '>Select attendance status for each subject</h4>
+                    </div>
+                    <button 
+                    onClick={saveAttendance}
+                    className='bg-gray-100 text-gray-950 rounded text-xl h-10 p-2 ml-10'>SAVE</button>
+                    
+                </div>
+                    
+                    <SubjectList onAttendanceSubmit={handleAttendanceSubmit}/>
+                </div>
+
+            </div>     
             
-            {/* Subject Selection */}
-            <div className="mb-6">
-                <label className='bg-gray-300 rounded-lg text-3xl p-2 m-5 text-black font-semibold'>
-                    Subjects in your Today's Schedule 👉
-                </label>
-                <select
-                    className="p-2 rounded-lg bg-gray-300"
-                    value={selectedSubject}
-                    onChange={handleSubjectChange}
-                >
-                    {subjects.map((subject, idx) => (
-                        <option key={idx} className="bg-gray-300 text-black" value={subject}>
-                            {subject}
-                        </option>
-                    ))}
-                </select>
-            </div>
-            <h2 className="text-2xl p-3 m-2 mb-0 pb-0 font-semibold text-white">Mark Attendance Status for: {selectedSubject}</h2>
-            <form className="p-5 rounded-lg text-white font-semibold flex flex-row items-center gap-20">   
-                
-                <div className="mb-4 text-xl">
-                    <input
-                        type="radio"
-                        id="present"
-                        name="attendance"
-                        value="Present"
-                        checked={attendance === 'Present'}
-                        onChange={(e) => setAttendance(e.target.value)}
-                    />
-                    <label htmlFor="present" className="ml-2">Present</label>
-                </div>
-                <div className="mb-4 text-xl">
-                    <input
-                        type="radio"
-                        id="absent"
-                        name="attendance"
-                        value="Absent"
-                        checked={attendance === 'Absent'}
-                        onChange={(e) => setAttendance(e.target.value)}
-                    />
-                    <label htmlFor="absent" className="ml-2">Absent</label>
-                </div>
-                <div className="mb-4 text-xl">
-                    <input
-                        type="radio"
-                        id="no class"
-                        name="attendance"
-                        value="No Class"
-                        checked={attendance === 'No Class'}
-                        onChange={(e) => setAttendance(e.target.value)}
-                        />
-                        <label htmlFor="no-class" className="ml-2">No Class</label>
-                    </div>
-                    <div className="mb-4 text-xl">
-                        <input
-                            type="radio"
-                            id="gt"
-                            name="attendance"
-                            value="GT"
-                            checked={attendance === 'GT'}
-                            onChange={(e) => setAttendance(e.target.value)}
-                        />
-                        <label htmlFor="gt" className="ml-2">GT</label>
-                    </div>
-                    <button
-                    type="button"
-                    className="bg-gray-950 text-white text-xl px-4 py-2 rounded-lg"
-                    onClick={handleAttendanceSubmit}
-                >
-                    SAVE
-                </button>
-            </form>
         </div>
     );
 }
