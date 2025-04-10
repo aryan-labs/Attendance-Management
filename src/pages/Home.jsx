@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from '../components/Register';
+import Login from '../components/Login';
 import { NavLink } from 'react-router-dom';
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
         <div className="flex gap-10">
           <NavLink to='/Login' className="text-gray-400 text-xl pt-1 hover:text-white">Login</NavLink>
           <NavLink to='/Register' className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-300">Register</NavLink>
-        </div> 
+          <NavLink to='/Profile'> <img className='w-9 h-9 rounded-xl' src='https://static.vecteezy.com/system/resources/thumbnails/026/630/551/small/profile-icon-symbol-design-illustration-vector.jpg' alt=''/></NavLink>         </div> 
       </div>
        
       
