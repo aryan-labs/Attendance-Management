@@ -6,6 +6,7 @@ import Register from './components/Register'
 import Login from './components/Login'
 import MarkAttendance from './components/MarkAttendance'
 import Profile from './components/Profile'
+import ChangeProfile from './components/changeProfile'
 
 const App = () => {
   return (
@@ -15,15 +16,18 @@ const App = () => {
         <Route path='/Login' element={<Login></Login>}/>
         <Route path='/Register' element={<Register></Register>}/>
         <Route path='/Profile' element={<Profile></Profile>}/>
+        <Route path='/changeProfile' element={<ChangeProfile/>}/>
         <Route path='/MarkAttendance' element={
           <MarkAttendance
             subjects={['English', 'Maths', 'Physics','Chemistry','Engineering Drawing']}
           />
         }>
+
         </Route>
       </Routes>
     </div>
   )
 }
 
-export default App
+export default App;
+
