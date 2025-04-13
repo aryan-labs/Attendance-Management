@@ -1,0 +1,52 @@
+/* Light Theme */
+.light {
+  background-color: #ffffff;
+  color: #000000;
+}
+
+
+.lightactive{
+  color: gray;
+}
+
+.lightselect {
+  background-color: #f0f0f0;
+  color: #000000;
+  border: black 1px solid;
+}
+
+/* Dark Theme */
+.dark {
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.darkselect {
+  background-color: #333333;
+  color: #ffffff;
+  border: white 1px solid;
+}
+
+.darkactive{
+  color: #d0cdd7;
+}
+
+/*Calender*/
+.calendar-container .react-calendar {
+  height: 350px;
+  border-radius: 10px;
+  font-weight: 100;
+  font-size: 20px;
+  width: 280px;
+  overflow: hidden; 
+}
+
+.darkcalender .react-calendar{
+  background-color: black;
+}
+
+.lightcalender .react-calendar{
+  background: white;
+}
+
+
