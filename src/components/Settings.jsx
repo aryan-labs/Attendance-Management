@@ -1,22 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState , useContext} from 'react';
 import Notification from './Notification';
 import Appearance from './Appearance';
+import Privacy from './Privacy';
+import Account from './Account';
+import './Appearance.css';
+import { ThemeContext } from '../contexts/ThemeContext';
+
 
 export default function Settings() {
-  const [activeSection, setActiveSection] = useState('Notification'); // Default section
+  const [activeSection, setActiveSection] = useState('Appearance'); // Default section
+
+  const { theme } = useContext(ThemeContext);
 
   return (
     <>
-      <div className="min-h-screen font-serif bg-[#2f2f2f]">
-        <h1 className="bg-black h-16 mb-10"></h1>
-
-        <div className="bg-[#0f0a0add] flex flex-col justify-center max-w-5xl p-5 rounded-lg ml-60">
-          <h1 className="text-white font-bold text-2xl p-2">Settings</h1>
-          <div className="flex flex-row bg-zinc-800 text-gray-400 p-3 mb-5 w-fit space-x-8 rounded-xl border-gray-400 border-b">
+      <div className={`${theme === "Dark" ? "dark" : "light"} min-h-screen  w-full`}>
+        <div className=" flex flex-col max-w-full p-5 rounded-lg">
+          <h1 className=" font-bold text-2xl p-2">Settings</h1>
+          <div className={`${theme === "Dark" ? "bg-[#333333]" : "bg-[#f0f0f0]"} flex sm:flex-row flex-col p-3 mb-5 w-fit space-x-8 rounded-xl`}>
 
             <button
               className={`${
-                activeSection === 'Account' ? 'text-white' : ''
+                activeSection === 'Account' ? (theme === "Dark" ? "darkactive" : "lightactive") : ''
               }`}
               onClick={() => setActiveSection('Account')}
             >
@@ -25,7 +30,7 @@ export default function Settings() {
 
             <button
               className={`${
-                activeSection === 'Notification' ? 'text-white' : ''
+                activeSection === 'Notification' ? (theme === "Dark" ? "darkactive" : "lightactive") : ''
               }`}
               onClick={() => setActiveSection('Notification')}
             >
@@ -34,7 +39,7 @@ export default function Settings() {
 
             <button
               className={`${
-                activeSection === 'Appearance' ? 'text-white' : ''
+                activeSection === 'Appearance' ? (theme === "Dark" ? "darkactive" : "lightactive") : ''
               }`}
               onClick={() => setActiveSection('Appearance')}
             >
@@ -43,7 +48,7 @@ export default function Settings() {
 
             <button
               className={`${
-                activeSection === 'Privacy' ? 'text-white' : ''
+                activeSection === 'Privacy' ? (theme === "Dark" ? "darkactive" : "lightactive")  : ''
               }`}
               onClick={() => setActiveSection('Privacy')}
             >
@@ -51,7 +56,7 @@ export default function Settings() {
             </button>
           </div>
 
-          <div className="bg-[#0f0a0a] rounded-lg p-5 border-gray-400 border-x">
+          <div className=" rounded-lg p-5 pl-0 ">
             
             {activeSection === 'Account' && <Account />}
             {activeSection === 'Appearance' && <Appearance />}

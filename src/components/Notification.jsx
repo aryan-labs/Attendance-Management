@@ -1,4 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import './Appearance.css';
+import { ThemeContext } from '../contexts/ThemeContext';
 import { Switch, FormControlLabel } from '@mui/material';
 
 export default function Notification() {
@@ -8,6 +10,8 @@ export default function Notification() {
   const [lowAttendanceAlerts, setLowAttendanceAlerts] = useState(false);
   const [weeklyReports, setWeeklyReports] = useState(false);
 
+
+    const { theme } = useContext(ThemeContext);
 
   const saveSettings = () => {
     const settings = {
@@ -21,9 +25,24 @@ export default function Notification() {
     alert('Settings saved successfully!');
   };
 
+  const switchStyles = {
+    '& .MuiSwitch-switchBase': {
+      color: '#b0b0b0', // Gray thumb when OFF
+    },
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      color: '#2196f3', // Blue thumb when ON
+    },
+    '& .MuiSwitch-switchBase + .MuiSwitch-track': {
+      backgroundColor: '#b0b0b0', // Gray track when OFF
+    },
+    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
+      backgroundColor: '#2196f3', // Blue track when ON
+    },
+  };
+
   return (
-    <div>
-      <div className="text-gray-200 p-4">
+    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg w-full`}>
+      <div className=" p-4">
         <div className="p-4">
           <h1 className="font-bold text-2xl">Notification Settings</h1>
           <h5 className="text-gray-400">Manage how you receive notifications</h5>
@@ -41,20 +60,7 @@ export default function Notification() {
                 <Switch
                   checked={emailNotifications}
                   onChange={() => setEmailNotifications((prev) => !prev)}
-                  sx={{
-                    '& .MuiSwitch-switchBase': {
-                      color: '#b0b0b0', // Gray thumb when OFF
-                    },
-                    '& .MuiSwitch-switchBase.Mui-checked': {
-                      color: '#2196f3', // Blue thumb when ON
-                    },
-                    '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                      backgroundColor: '#b0b0b0', // Gray track when OFF
-                    },
-                    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                      backgroundColor: '#2196f3', // Blue track when ON
-                    },
-                  }}
+                  sx={switchStyles}
                 />
               }
               label=""
@@ -72,20 +78,7 @@ export default function Notification() {
                 <Switch
                   checked={pushNotifications}
                   onChange={() => setPushNotifications((prev) => !prev)}
-                  sx={{
-                    '& .MuiSwitch-switchBase': {
-                      color: '#b0b0b0', // Gray thumb when OFF
-                    },
-                    '& .MuiSwitch-switchBase.Mui-checked': {
-                      color: '#2196f3', // Blue thumb when ON
-                    },
-                    '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                      backgroundColor: '#b0b0b0', // Gray track when OFF
-                    },
-                    '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                      backgroundColor: '#2196f3', // Blue track when ON
-                    },
-                  }}
+                  sx={switchStyles}
                 />
               }
               label=""
@@ -108,20 +101,7 @@ export default function Notification() {
                   <Switch
                     checked={attendanceReminders}
                     onChange={() => setAttendanceReminders((prev) => !prev)}
-                    sx={{
-                      '& .MuiSwitch-switchBase': {
-                        color: '#b0b0b0', // Gray thumb when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked': {
-                        color: '#2196f3', // Blue thumb when ON
-                      },
-                      '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                        backgroundColor: '#b0b0b0', // Gray track when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                        backgroundColor: '#2196f3', // Blue track when ON
-                      },
-                    }}
+                    sx={switchStyles}
                   />
                 }
                 label=""
@@ -139,20 +119,7 @@ export default function Notification() {
                   <Switch
                     checked={lowAttendanceAlerts}
                     onChange={() => setLowAttendanceAlerts((prev) => !prev)}
-                    sx={{
-                      '& .MuiSwitch-switchBase': {
-                        color: '#b0b0b0', // Gray thumb when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked': {
-                        color: '#2196f3', // Blue thumb when ON
-                      },
-                      '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                        backgroundColor: '#b0b0b0', // Gray track when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                        backgroundColor: '#2196f3', // Blue track when ON
-                      },
-                    }}
+                    sx={switchStyles}
                   />
                 }
                 label=""
@@ -170,20 +137,7 @@ export default function Notification() {
                   <Switch
                     checked={weeklyReports}
                     onChange={() => setWeeklyReports((prev) => !prev)}
-                    sx={{
-                      '& .MuiSwitch-switchBase': {
-                        color: '#b0b0b0', // Gray thumb when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked': {
-                        color: '#2196f3', // Blue thumb when ON
-                      },
-                      '& .MuiSwitch-switchBase + .MuiSwitch-track': {
-                        backgroundColor: '#b0b0b0', // Gray track when OFF
-                      },
-                      '& .MuiSwitch-switchBase.Mui-checked + .MuiSwitch-track': {
-                        backgroundColor: '#2196f3', // Blue track when ON
-                      },
-                    }}
+                    sx={switchStyles}
                   />
                 }
                 label=""
@@ -193,7 +147,7 @@ export default function Notification() {
           </div>
         </div>
           <button
-            className='bg-gray-100 text-black p-2 ml-4 rounded-lg hover:scale-110 duration-200 hover:cursor-pointer'
+            className={`${theme === "Dark" ? "darkselect border-white" : "lightselect border-black"} p-2 ml-4 rounded-lg hover:scale-110 duration-200 hover:cursor-pointer font-bold border `}
             onClick={saveSettings}
             >Save Notification Settings
           </button>

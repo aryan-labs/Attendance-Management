@@ -1,7 +1,7 @@
 import React from 'react';
 import Subject from './Subject';
 
-export default function SubjectList({ onAttendanceSubmit }) {
+export default function SubjectList({ onAttendanceSubmit, reset }) {
   //data to be fetched from backend
   const subjects = [
     { id: 1, name: 'Mathematics' },
@@ -14,7 +14,7 @@ export default function SubjectList({ onAttendanceSubmit }) {
   return (
     <>
       {subjects.map((subject) => (
-        <Subject key={subject.id} subject={subject} onAttendanceSubmit={onAttendanceSubmit} />
+        <Subject key={subject.id} subject={subject} onAttendanceSubmit={onAttendanceSubmit} reset={reset} />
       ))}
     </>
   );
