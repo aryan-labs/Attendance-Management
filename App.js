@@ -1,13 +1,13 @@
-import React from "react";
-import MyProfile from "./MyProfile";
+import Chart from "./Chart";
+import Reports from "./Reports";
 
 function App(){
   return(
     <div>
-      <MyProfile/>
-    
+      <Reports />
+   
     </div>
-
   );
 }
+
 export default App;
