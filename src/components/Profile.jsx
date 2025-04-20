@@ -42,7 +42,7 @@ const Profile = () => {
         "7": ["Cyber Security", "Blockchain", "Data Mining"],
         "8": ["Cloud Computing", "Project", "Seminar"],
       },
-    }
+    },
   };
 
   const handleChange = (e) => {
@@ -56,15 +56,12 @@ const Profile = () => {
     };
 
     if (branch && year && semester) {
-      const subjectsList =
-        curriculum[branch]?.[year]?.[semester] || [];
+      const subjectsList = curriculum[branch]?.[year]?.[semester] || [];
       setAvailableSubjects(subjectsList);
 
       setFormData((prev) => ({
         ...prev,
-        subjects: prev.subjects.filter((s) =>
-          subjectsList.includes(s)
-        ),
+        subjects: prev.subjects.filter((s) => subjectsList.includes(s)),
       }));
     }
   };
@@ -84,12 +81,21 @@ const Profile = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex items-center justify-center">
-      <div className="bg-gray-800 text-white rounded-lg shadow-lg p-10 max-w-lg w-full">
-        <div className="flex pl-20">
-          <h1 className="text-3xl font-bold text-center">Attendance Tracker</h1>
-          <NavLink to="/" className="text-2xl pl-16">X</NavLink>
+    <div className="bg-black min-h-screen flex items-center justify-center px-4">
+      <div className="bg-gray-800 text-white rounded-lg shadow-lg p-6 sm:p-10 max-w-lg w-full">
+        {/* Centered Header */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="w-full text-center relative">
+            <h1 className="text-2xl sm:text-3xl font-bold">Attendance Tracker</h1>
+            <NavLink
+              to="/"
+              className="absolute right-0 top-1 text-xl hover:text-red-400"
+            >
+              X
+            </NavLink>
+          </div>
         </div>
+
         <p className="text-gray-400 text-center mb-6">Complete Your Profile</p>
 
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -172,7 +178,7 @@ const Profile = () => {
           </div>
 
           <div>
-            <label className="block text-lg font-semibold text-center pr-12 mb-3">
+            <label className="block text-lg font-semibold text-center mb-3">
               Select Subjects
             </label>
             {availableSubjects.length > 0 ? (
