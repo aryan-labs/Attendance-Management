@@ -36,7 +36,7 @@ const Home = () => {
         </div>
       </div>
 
-      <div className="bg-gray-900 py-16 px-12 text-center border-t border-white">
+      <div className="bg-black py-16 px-12 text-center border-t border-white">
         <h2 className="text-4xl font-bold">Key Features</h2>
         <p className="text-gray-400 mt-4">Everything you need to track and improve your attendance</p>
         <div className="flex flex-col md:flex-row justify-center mt-10 gap-10">
