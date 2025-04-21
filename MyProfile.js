@@ -1,8 +1,18 @@
 import React from 'react';
 import { FaRegEdit } from "react-icons/fa";
-const Profile = () => {
+import './Appearance.css';
+import { ThemeContext } from '../contexts/ThemeContext';
+
+const MyProfile = () => {
   return (
     <div className="bg-gray-900">
+      <div className={`${theme === "Dark" ? "dark" : "light"} min-h-screen w-full ${
+      font === "small"
+      ? "font-small-text"
+      : font === "Medium"
+      ? "font-medium-text"
+      : "font-large-text"
+  }`}/>
       <div className="flex justify-between my-4 px-4">
         <h1 className="text-white place-self-center md:text-3xl">My Profile</h1>
         <div className='flex'>
@@ -115,4 +125,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyProfile;
