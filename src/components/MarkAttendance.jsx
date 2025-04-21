@@ -11,7 +11,7 @@ export default function MarkAttendance() {
   const [reset, setReset] = useState(false); // State to trigger reset in Subject components
 
 
-  const { theme } = useContext(ThemeContext);
+  const { theme, font } = useContext(ThemeContext);
 
 
   const handleDateChange = (date) => {
@@ -34,20 +34,39 @@ export default function MarkAttendance() {
     };
 
     return (
-        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} w-full`}>
+        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} w-full ${
+            font === "Small"
+              ? "font-small-text"
+              : font === "Medium"
+              ? "font-medium-text"
+              : "font-large-text"
+          }`}>
         <div className="min-h-screen">
-            <div className=" text-2xl p-4 pb-0 font-bold">
+            <div className={`${
+            font === "Small"
+              ? "font-small-heading"
+              : font === "Medium"
+              ? "font-medium-heading"
+              : "font-large-heading"
+            } p-4 pb-0 font-bold
+            sm:max-w-full max-w-min`}>
                 Mark Attendance
             </div>
-                <p className="p-4 text-lg pt-0 text-gray-400 font-normal">
+                <p className="p-4 pt-0 text-gray-400 font-normal">
 Mark your presence effortlessly and stay on track with your commitments. Record Today, Succeed Tomorrow!
 </p>
 
-            <div className='font-bold text-4xl mb-20 flex flex-row p-5 h-auto w-full'>
+            <div className='font-bold mb-20 flex lg:flex-row flex-col p-5 h-auto w-full'>
                                 
                 <div 
-                className={`${theme === "Dark" ? "darkcalender border-white" : "lightcalender border-black"} p-4 rounded-lg mt-4 mr-4 calendar-container border`}>
-                    <h2 className='text-2xl p-2 mb-5'>Select Date</h2>
+                className={`${theme === "Dark" ? "darkcalender border-white" : "lightcalender border-black"} p-4 rounded-lg mt-4 mr-4 calendar-container border lg:w-1/4 lg:h-auto h-1/4`}>
+                    <h2 className={`${
+            font === "Small"
+              ? "font-small-heading"
+              : font === "Medium"
+              ? "font-medium-heading"
+              : "font-large-heading"
+          } p-2 mb-5`}>Select Date</h2>
                     <Calendar
                         value={selectedDate}
                         onChange={handleDateChange} // Allow date selection
@@ -61,17 +80,23 @@ Mark your presence effortlessly and stay on track with your commitments. Record 
                 </div>
 
                 <div
-                className={`${theme === "Dark" ? "dark border-white" : "light border-black"} p-2 rounded-lg mt-4  w-full border`}>
-                <div className='flex flex-row items-center gap-x-60'>
+                className={`${theme === "Dark" ? "dark border-white" : "light border-black"} p-2 rounded-lg mt-4  lg:w-5/6 w-[97%] border`}>
+                <div className='flex flex-row items-center'>
                     <div>
-                        <h2 className="text-2xl p-3 m-2 mb-0 pb-0 font-bold ">
+                        <h2 className= {`${
+            font === "Small"
+              ? "font-small-heading"
+              : font === "Medium"
+              ? "font-medium-heading"
+              : "font-large-heading"
+          } p-3 m-2 mb-0 pb-0 font-bold`}>
                         Mark Attendance for: {selectedDate.toDateString()}
                         </h2>
-                        <h4 className='text-lg pl-5 pb-5 text-gray-400 font-normal'>Select attendance status for each subject</h4>
+                        <h4 className='pl-5 pb-5 text-gray-400 font-normal'>Select attendance status for each subject</h4>
                     </div>
                     <button 
                     onClick={saveAttendance}
-                    className={`${theme === "Dark" ? "darkselect border-white" : "lightselect border-black"} rounded text-xl h-10 p-2 ml-20 border`}>
+                    className={`${theme === "Dark" ? "darkselect border-white" : "lightselect border-black"} rounded  h-1/6 p-2 ml-auto mr-9 border`}>
                     SAVE</button>
                     
                 </div>

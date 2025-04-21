@@ -7,8 +7,7 @@ export default function Account() {
   const [cpassword, setCPassword] = useState("");
   const [error, setError] = useState(false);
 
-  const { theme } = useContext(ThemeContext);
-
+  const { theme , font} = useContext(ThemeContext);
 
   const saveSettings = () => {
     if (password !== cpassword) {
@@ -27,10 +26,23 @@ export default function Account() {
   };
 
   return (
-    <div className={theme === "Dark" ? "dark" : "light"}>
+    <div className={`${
+      font === "Small"
+        ? "font-small-text"
+        : font === "Medium"
+        ? "font-medium-text"
+        : "font-large-text"
+    } ${theme === "Dark" ? "dark border-white" : "light border-black"}
+border rounded-lg`}>
       <div className=" p-4">
         <div className="p-4">
-          <h1 className="font-bold text-2xl">Account Settings</h1>
+          <h1 className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold`}>Account Settings</h1>
           <h5 className="mb-4 text-gray-400">
             Manage your account details and security
           </h5>

@@ -11,7 +11,7 @@ export default function Notification() {
   const [weeklyReports, setWeeklyReports] = useState(false);
 
 
-    const { theme } = useContext(ThemeContext);
+    const { theme, font } = useContext(ThemeContext);
 
   const saveSettings = () => {
     const settings = {
@@ -41,11 +41,23 @@ export default function Notification() {
   };
 
   return (
-    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg w-full`}>
+    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg w-full ${
+        font === "Small"
+          ? "font-small-text"
+          : font === "Medium"
+          ? "font-medium-text"
+          : "font-large-text"
+      }`}>
       <div className=" p-4">
         <div className="p-4">
-          <h1 className="font-bold text-2xl">Notification Settings</h1>
-          <h5 className="text-gray-400">Manage how you receive notifications</h5>
+          <h1 className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold`}>Notification Settings</h1>
+          <h5 className="text-gray-400 mr-4">Manage how you receive notifications</h5>
         </div>
 
         <div className="p-4">
@@ -53,7 +65,7 @@ export default function Notification() {
           <div className="flex justify-between items-center">
             <div>
               Email Notifications
-              <p className="text-gray-400">Receive notifications via email</p>
+              <p className="text-gray-400 mr-4">Receive notifications via email</p>
             </div>
             <FormControlLabel
               control={
@@ -71,7 +83,7 @@ export default function Notification() {
           <div className="flex justify-between items-center pt-8 pb-4">
             <div>
               Push Notifications
-              <p className="text-gray-400">Receive notifications on your device</p>
+              <p className="text-gray-400 mr-4">Receive notifications on your device</p>
             </div>
             <FormControlLabel
               control={
@@ -88,13 +100,19 @@ export default function Notification() {
           <hr />
 
           <div>
-            <p className="pt-8 pb-5 text-lg font-bold">Notification Types</p>
+            <p className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold pt-8 pb-5`}>Notification Types</p>
 
             {/* Attendance Reminders */}
             <div className="flex justify-between items-center">
               <div>
                 Attendance Reminders
-                <p className="text-gray-400">Daily reminders to mark your attendance</p>
+                <p className="text-gray-400 mr-4">Daily reminders to mark your attendance</p>
               </div>
               <FormControlLabel
                 control={
@@ -112,7 +130,7 @@ export default function Notification() {
             <div className="flex justify-between items-center pt-5 pb-5">
               <div>
                 Low Attendance Alerts
-                <p className="text-gray-400">Get alerts when your attendance falls below required percentage</p>
+                <p className="text-gray-400 mr-4">Get alerts when your attendance falls below required percentage</p>
               </div>
               <FormControlLabel
                 control={
@@ -130,7 +148,7 @@ export default function Notification() {
             <div className="flex justify-between items-center pb-4">
               <div>
                 Weekly Reports
-                <p className="text-gray-400">Receive weekly attendance summary reports</p>
+                <p className="text-gray-400 mr-4">Receive weekly attendance summary reports</p>
               </div>
               <FormControlLabel
                 control={

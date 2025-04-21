@@ -8,7 +8,7 @@ export default function Insights() {
       const { theme, font } = useContext(ThemeContext);
     
   return (
-    <>
+    <div className="min-h-screen">
         <div  
         className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} ${
             font === "Small"
@@ -16,7 +16,7 @@ export default function Insights() {
               : font === "Medium"
               ? "font-medium-text"
               : "font-large-text"
-          } flex flex-col w-[80vw] rounded-lg h-screen`}>
+          } flex flex-col sm:max-w-full rounded-lg `}>
              <div className='p-4'>
                 <h1 className={` ${
         font === "Small"
@@ -44,6 +44,6 @@ export default function Insights() {
             </div>
         </div>
       
-    </>
+    </div>
   )
 }

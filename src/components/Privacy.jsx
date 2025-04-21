@@ -11,7 +11,7 @@ export default function Privacy() {
   const [download, setDownload] = useState(false);
   const [clear, setClear] = useState(false);
 
-  const { theme } = useContext(ThemeContext);
+  const { theme, font } = useContext(ThemeContext);
   
 
   const saveSettings = () => {
@@ -40,10 +40,22 @@ export default function Privacy() {
   };
 
   return (
-    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg`}>
+    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg ${
+      font === "Small"
+        ? "font-small-text"
+        : font === "Medium"
+        ? "font-medium-text"
+        : "font-large-text"
+    }`}>
       <div className="p-4 flex flex-row justify-between items-center">
         <div className="p-4">
-          <h1 className="font-bold text-2xl">Privacy Settings</h1>
+          <h1 className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold`}>Privacy Settings</h1>
           <h5 className="text-[#9fa0a1]">
             Manage your privacy and data sharing preferences
           </h5>
@@ -60,7 +72,7 @@ export default function Privacy() {
           <div className="flex justify-between items-center">
             <div>
               <span>Share attendance with Faculty</span>
-              <p className=" text-sm text-[#9fa0a1]">
+              <p className="text-[#9fa0a1] mr-4">
                 Allow faculty members to view your attendance data
               </p>
             </div>
@@ -80,7 +92,7 @@ export default function Privacy() {
           <div className="flex justify-between items-center">
             <div>
               <span>Analytics Collection</span>
-              <p className=" text-sm text-[#9fa0a1]">
+              <p className=" text-[#9fa0a1] mr-4">
                 Allow us to collect anonymous usage data to improve the
                 application
               </p>
@@ -101,7 +113,7 @@ export default function Privacy() {
           <div className="flex justify-between items-center">
             <div>
               <span>Profile Visibility</span>
-              <p className="text-sm text-[#9fa0a1]">
+              <p className="text-[#9fa0a1] mr-4">
                 Allow other students to see your profile and attendance
                 statistics
               </p>
@@ -122,14 +134,20 @@ export default function Privacy() {
       <hr />
       <div className=" p-4">
         <div className="p-4">
-          <h1 className="font-bold text-2xl">Data Management</h1>
+          <h1 className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold`}>Data Management</h1>
           <h5 className="text-[#9fa0a1]">Manage your personal data</h5>
         </div>
         <div className="p-4 flex flex-col gap-6">
           <div className="flex justify-between items-center">
             <div>
               <span>Download Your Data</span>
-              <p className="text-[#9fa0a1] text-sm">
+              <p className="text-[#9fa0a1] ">
                 Download a copy of your attendance records
               </p>
             </div>

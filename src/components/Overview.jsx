@@ -16,17 +16,17 @@ export default function Overview() {
     const { theme, font } = useContext(ThemeContext);
   
   return (
-    <div>
+    <>
       <div 
-      className={`${theme === "Dark" ? "dark" : "light"} w-full ${
+      className={`${theme === "Dark" ? "dark" : "light"} ${
         font === "Small"
           ? "font-small-heading"
           : font === "Medium"
           ? "font-medium-heading"
           : "font-large-heading"
-      } flex flex-row gap-5`}>
+      } grid grid-cols-2 md:grid-flow-col md:auto-cols-fr md:gap-[4vw] gap-[1vw] md:max-w-full py-4`}>
         {/* Overall Section */}
-        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-40 w-72 flex flex-col rounded-lg p-4`}>
+        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-auto  flex flex-col rounded-lg p-4`}>
           <p className={` ${
         font === "Small"
           ? "font-small-text"
@@ -62,7 +62,7 @@ export default function Overview() {
 
         {/* Present Section */}
         <div 
-        className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-40 w-72 rounded-lg p-4`}>
+        className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-auto rounded-lg p-4`}>
           <p className={` ${
         font === "Small"
           ? "font-small-text"
@@ -81,7 +81,7 @@ export default function Overview() {
         </div>
 
         {/* Absent Section */}
-        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-40 w-72 rounded-lg p-4`}>
+        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-auto  rounded-lg p-4`}>
           <p className={` ${
         font === "Small"
           ? "font-small-text"
@@ -100,7 +100,7 @@ export default function Overview() {
         </div>
 
         {/* Remaining Section */}
-        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-40 w-72 rounded-lg p-4`}>
+        <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} h-auto  rounded-lg p-4`}>
           <p className={` ${
         font === "Small"
           ? "font-small-text"
@@ -119,9 +119,9 @@ export default function Overview() {
         </div>
       </div>
 
-      <div className="flex flex-row gap-5 mt-4">
+      <div className="flex flex-col lg:flex-row gap-5 mt-4 max-w-screen">
         <div 
-        className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} rounded-lg mt-4 p-4 flex flex-col w-1/2`}>
+        className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} rounded-lg mt-4 p-4 flex flex-col lg:w-1/2 `}>
         <div className={` ${
         font === "Small"
           ? "font-small-heading"
@@ -136,7 +136,7 @@ export default function Overview() {
       </div>
 
       <div 
-      className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} rounded-lg mt-4 p-4 flex flex-col w-1/2`}>
+      className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} rounded-lg mt-4 p-4 flex flex-col lg:w-1/2`}>
             <div className={` ${
         font === "Small"
           ? "font-small-heading"
@@ -151,6 +151,6 @@ export default function Overview() {
       </div>
       </div>
       
-    </div>
+    </>
   );
 }

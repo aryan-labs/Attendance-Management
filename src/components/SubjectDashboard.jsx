@@ -14,7 +14,7 @@ export default function SubjectDashboard() {
           : font === "Medium"
           ? "font-medium-text"
           : "font-large-text"
-      } w-[80vw] h-screen`}>
+      } sm:max-w-full  rounded-lg `}>
         <div className='p-4'>
             <h1 className={`${font === "Small"
           ? "font-small-heading"

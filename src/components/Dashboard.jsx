@@ -12,20 +12,20 @@ export default function Dashboard() {
       
     
   return (
-    <div>
-      <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} w-full ${
+    <>
+      <div className={`${theme === "Dark" ? "dark border border-white" : "light border border-black"} w-full  ${
             font === "Small"
               ? "font-small-heading"
               : font === "Medium"
               ? "font-medium-heading"
               : "font-large-heading"
-          }`}>
+          } `}>
 
-        <div className=" flex flex-col w-full p-5 pt-2 rounded-lg">
+        <div className=" flex flex-col p-5 pt-2 rounded-lg">
           <div className="font-bold p-2">Dashboard</div>
           <div className={`${
               theme === "Dark" ? "bg-[#333333]" : "bg-[#f0f0f0]"
-            } flex sm:flex-row flex-col p-3 mb-5 w-fit space-x-8 rounded-xl ${
+            } flex flex-row p-3 mb-5 w-fit space-x-8 rounded-xl ${
               font === "Small"
                 ? "font-small-text"
                 : font === "Medium"
@@ -84,6 +84,6 @@ export default function Dashboard() {
          </div>
         </div>
         </div>
-    </div>
+    </>
   )
 }
