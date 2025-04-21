@@ -4,6 +4,8 @@ import { VscFilePdf } from "react-icons/vsc";
 import { FaRegFileExcel } from "react-icons/fa";
 import { GrDocumentCsv } from "react-icons/gr";
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import './Appearance.css';
+import { ThemeContext } from '../contexts/ThemeContext';
 
 const data = [
     { Month: 'Jan', Attendance: 30},
@@ -24,6 +26,14 @@ const data = [
 function Reports() {
   return (
     <div className="bg-gray-900 text-white min-h-screen p-4">
+      <div className={`${theme === "Dark" ? "dark" : "light"} min-h-screen w-full ${
+      font === "small"
+      ? "font-small-text"
+      : font === "Medium"
+      ? "font-medium-text"
+      : "font-large-text"
+  }`}/>
+  
       <div className="md:flex m-4 md:gap-4">
         {/* Filters Section */}
         <div className="flex flex-col outline rounded-md w-full my-4 p-4 md:w-1/4">
