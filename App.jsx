@@ -6,8 +6,8 @@ import { Route, Router, Routes } from 'react-router-dom'
 function App(){
   return(
     <div>
-      <Reports />
-      <MyProfile/>
+      <Route path='/Reports' element={<Reports></Reports>}/>
+      <Route path='/MyProfile' element={<MyProfile></MyProfile>}/>
     </div>
   );
 }
