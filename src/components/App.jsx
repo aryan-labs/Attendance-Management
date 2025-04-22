@@ -10,6 +10,9 @@ import SideBar from './components/SideBar'
 import Settings from './components/Settings'
 import Dashboard from './components/Dashboard'
 import Header from './components/Header'
+import Reports from './components/Reports';
+import MyProfile from "'./components/MyProfile'";
+import ChangeProfile from './components/changeProfile'
 
 const App = () => {
   return (
@@ -22,13 +25,14 @@ const App = () => {
         <Route path='/SideBar' element={<SideBar></SideBar>}/>
         <Route path='/Login' element={<Login></Login>}/>
         <Route path='/Profile' element={<Profile></Profile>}/>
+         <Route path='/changeProfile' element={<ChangeProfile/>}/>
         <Route path='/Register' element={<Register></Register>}/>
         <Route path='/Dashboard' element={<Dashboard></Dashboard>}/>
         <Route path='/Settings' element={<Settings></Settings>}/>
-        <Route path='/MarkAttendance' element={
-          <MarkAttendance />
-        }>
-        </Route>
+        <Route path='/MarkAttendance' element={<MarkAttendance />}></Route>
+        <Route path='/Reports' element={<Reports></Reports>}/>
+        <Route path='/MyProfile' element={<MyProfile></MyProfile>}/>
+        
       </Routes>
     </div>
     </div>
