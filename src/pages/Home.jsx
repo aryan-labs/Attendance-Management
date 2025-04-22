@@ -6,17 +6,7 @@ const Home = () => {
   return (
     <div className="min-h-screen bg-black text-white">
 
-      <div className="flex justify-between items-center p-4 border-b border-white">
-        <h1 className="text-lg">Attendance Tracker</h1>
-        <div className="flex gap-10">
-          <NavLink to='/Login' className="text-gray-400 text-xl pt-1 hover:text-white">Login</NavLink>
-          <NavLink to='/Register' className="bg-white text-black px-4 py-2 rounded-md hover:bg-gray-300">Register</NavLink>
-          <NavLink to='/Profile'>
-            <img className='w-9 h-9 rounded-xl' src='https://static.vecteezy.com/system/resources/thumbnails/026/630/551/small/profile-icon-symbol-design-illustration-vector.jpg' alt='' />
-          </NavLink>
-        </div>
-      </div>
-
+      
       <div className="flex flex-col md:flex-row justify-between pt-20 pr-12 pl-12 pb-12">
         <div className='pt-5'>
           <h2 className="text-5xl font-bold">Track Your College<br /> Attendance</h2>
