@@ -81,9 +81,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="bg-black min-h-screen flex items-center justify-center px-4">
-      <div className="bg-gray-800 text-white rounded-lg shadow-lg p-6 sm:p-10 max-w-lg w-full">
-        {/* Centered Header */}
+    <div className="flex-1 bg-black min-h-screen flex justify-center px-4 py-8">
+      <div className="bg-gray-800 text-white rounded-lg shadow-lg p-6 sm:p-10 w-full">
+        {/* Header */}
         <div className="flex items-center justify-between mb-6">
           <div className="w-full text-center relative">
             <h1 className="text-2xl sm:text-3xl font-bold">Attendance Tracker</h1>
@@ -135,8 +135,8 @@ const Profile = () => {
             <select
               name="year"
               value={formData.year}
-              className="w-full p-2 rounded-lg bg-gray-700 border border-gray-600"
               onChange={handleChange}
+              className="w-full p-2 rounded-lg bg-gray-700 border border-gray-600"
               required
             >
               <option value="">Select year</option>
@@ -216,3 +216,4 @@ const Profile = () => {
 };
 
 export default Profile;
+
