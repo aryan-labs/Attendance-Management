@@ -1,10 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext } from 'react';
 import './Appearance.css';
 import { ThemeContext } from '../contexts/ThemeContext';
 
 export default function Appearance() {
-  const { theme, setTheme } = useContext(ThemeContext);
-  const [font, setFont] = useState("Small");
+  const { theme, setTheme, font, setFont } = useContext(ThemeContext);
 
   const saveSettings = () => {
     const settings = {
@@ -16,18 +15,31 @@ export default function Appearance() {
   };
 
   return (
-    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg w-full`}>
+    <div className={`${theme === "Dark" ? "dark border-white" : "light border-black"} border rounded-lg w-full ${
+      font === "Small"
+        ? "font-small-text"
+        : font === "Medium"
+        ? "font-medium-text"
+        : "font-large-text"
+    }`}>
       <div className="p-4">
         <div className="p-4">
-          <h1 className="font-bold text-2xl">Appearance Settings</h1>
-          <h5 className="text-[#9fa0a1]">Customise how the application looks</h5>
+          <h1 className={`${
+        font === "Small"
+          ? "font-small-heading"
+          : font === "Medium"
+          ? "font-medium-heading"
+          : "font-large-heading"
+      } font-bold`}>Appearance Settings</h1>
+          <h5 className="text-[#9fa0a1]">Customize how the application looks</h5>
         </div>
       </div>
 
       <div className="p-4">
         <div className="flex flex-col ml-4 mb-6">
-          <div className='font-bold'>Theme</div>
+          <div className="font-bold">Theme</div>
           <select
+          value={theme}
             name="Theme"
             className={`${theme === "Dark" ? "dark" : "light"} rounded border mt-3 p-2`}
             onChange={(e) => setTheme(e.target.value)}
@@ -37,9 +49,10 @@ export default function Appearance() {
           </select>
         </div>
 
-        <div className="flex flex-col ml-4  mb-6">
-          <div className='font-bold'>Font</div>
+        <div className="flex flex-col ml-4 mb-6">
+          <div className="font-bold">Font</div>
           <select
+          value={font}
             name="Font"
             className={`${theme === "Dark" ? "dark" : "light"} rounded border mt-3 p-2 mb-3`}
             onChange={(e) => setFont(e.target.value)}
@@ -51,7 +64,7 @@ export default function Appearance() {
         </div>
 
         <button
-          className={`${theme === "Dark" ? "darkselect border-white" : "lightselect border-black"} p-2 ml-4 rounded-lg hover:scale-110 duration-200 hover:cursor-pointer font-bold border `}
+          className={`${theme === "Dark" ? "darkselect border-white" : "lightselect border-black"} p-2 ml-4 rounded-lg hover:scale-110 duration-200 hover:cursor-pointer font-bold border`}
           onClick={saveSettings}
         >
           Save Appearance Settings

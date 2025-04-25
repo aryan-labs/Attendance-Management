@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import Notification from './Notification';
 import Appearance from './Appearance';
 import Privacy from './Privacy';
@@ -6,9 +6,15 @@ import Account from './Account';
 import './Appearance.css';
 import { ThemeContext } from '../contexts/ThemeContext';
 
-export default function Settings() {
-  const [activeSection, setActiveSection] = useState('Appearance'); // Default section
+export default function Settings({ activesection }) {
+  const [activeSection, setActiveSection] = useState(activesection); // Default section
   const { theme, font } = useContext(ThemeContext);
+
+  useEffect(() => { //prop handling
+    if (activesection) {
+      setActiveSection(activesection);
+    }
+  }, [activesection]);
 
   return (
     <>
