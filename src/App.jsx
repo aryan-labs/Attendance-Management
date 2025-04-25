@@ -10,32 +10,31 @@ import SideBar from './components/SideBar'
 import Settings from './components/Settings'
 import Dashboard from './components/Dashboard'
 import Header from './components/Header'
-import Reports from './components/Reports';
-import MyProfile from "'./components/MyProfile'";
-import ChangeProfile from './components/changeProfile'
+import Account from './components/Account'
+import Notification from './components/Notification'
+import Privacy from './components/Privacy'
+import Appearance from './components/Appearance'
 
 const App = () => {
   return (
-    <div className='min-h-screen min-w-screen'>
-      <Header />
-    <div className='flex flex-row gap-0 w-auto '>
+    <>
+    <div className='flex'> 
       <SideBar />
       <Routes>
         <Route path='/' element={<Home></Home>}/>
-        <Route path='/SideBar' element={<SideBar></SideBar>}/>
         <Route path='/Login' element={<Login></Login>}/>
         <Route path='/Profile' element={<Profile></Profile>}/>
-         <Route path='/changeProfile' element={<ChangeProfile/>}/>
         <Route path='/Register' element={<Register></Register>}/>
         <Route path='/Dashboard' element={<Dashboard></Dashboard>}/>
-        <Route path='/Settings' element={<Settings></Settings>}/>
+        <Route path='/Settings' element={<Settings activesection="Account" />}/>
+        <Route path='/Settings/Account' element={<Settings activesection="Account" />}/>
+        <Route path='/Settings/Notification' element={<Settings activesection="Notification" />}/>
+        <Route path='/Settings/Privacy' element={<Settings activesection="Privacy" />}/>
+        <Route path='/Settings/Appearance' element={<Settings activesection="Appearance" />}/>
         <Route path='/MarkAttendance' element={<MarkAttendance />}></Route>
-        <Route path='/Reports' element={<Reports></Reports>}/>
-        <Route path='/MyProfile' element={<MyProfile></MyProfile>}/>
-        
       </Routes>
-    </div>
-    </div>
+      </div>
+    </>
   )
 }
 
