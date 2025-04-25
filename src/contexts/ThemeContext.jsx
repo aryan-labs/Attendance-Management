@@ -5,7 +5,7 @@ export const ThemeContext = createContext();
 
 // Create the Theme Provider
 export const ThemeProvider = ({ children }) => {
-  const [theme, setTheme] = useState("Light");
+  const [theme, setTheme] = useState("Dark");
   const [font, setFont] = useState("Small"); // Add font state
 
   return (
